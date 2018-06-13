@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.2.dtd">
+<struts>
+
+	<package name="register" namespace="/register" extends="struts-default">
+		<action name="register_*" class="RegisterAction" method="{1}" >
+		<result name="succeed">/jsp/test.jsp</result>
+		<result name="zhanshi">/jsp/zhanshi.jsp</result>
+		
+		
+		</action>
+	</package>
+
+	
+
+<!-- 
+	<package name="user" namespace="/user" extends="struts-default">
+		<action name="user_*" class="userAction" method="{1}" >
+			<result name="input" >/login.jsp</result>
+			<result name="logOut" type="redirect">/login.jsp</result>
+			<result name="success">/index.jsp</result>
+			<result name="userList">/jsp/auth/user/user_list.jsp</result>
+			<result name="toUserList" type="redirect">/user/user_list.do</result>
+			<result name="toUserDetail" >/jsp/auth/user/user_detail.jsp</result>
+			<result name="toUserEdit">/jsp/auth/user/user_edit.jsp</result>
+			<result name="toUserAdd">/jsp/auth/user/user_add.jsp</result>
+			<result name="pwd" >/login.jsp</result>
+			<result name="toIndexSuc">/index2.jsp</result>
+			<result name="toFullExamSuc">/jsp/khpf/FullExam/fullExam_kssm.jsp</result>
+			<result name="notExamSuc">/jsp/khpf/xzks/notExam.jsp</result>
+	      	<result name="notStdSuc">/jsp/khpf/xzks/notStd.jsp</result>
+		</action>
+	</package>
+	
+	<package name="menu" namespace="/menu" extends="struts-default">
+		<action name="menu_*" class="menuAction" method="{1}">
+			<result name="menuList">/jsp/auth/menu/menu_list.jsp</result>
+			<result name="menuAdd" >/jsp/auth/menu/menu_add.jsp</result>
+			<result name="menuEdit">/jsp/auth/menu/menu_edit.jsp</result>
+			<result name="toMenuList" type="redirect">/menu/menu_list.do</result>
+		</action>
+		
+	</package>
+	
+	<package name="role" namespace="/role" extends="struts-default">
+		<action name="role_*" class="roleAction" method="{1}">
+			<result name="roleList">/jsp/auth/role/role_list.jsp</result>
+			<result name="selectRoleList">/jsp/auth/role/select_role_list.jsp</result>
+			<result name="roleAdd">/jsp/auth/role/role_add.jsp</result>
+			<result name="setAuth">/jsp/auth/role/role_setAuth.jsp</result>
+			<result name="roleEdit">/jsp/auth/role/role_edit.jsp</result>
+			<result name="toRoleList" type="redirect">/role/role_list.do</result>
+		</action>
+		
+	</package>
+	 -->
+	<!-- 日志
+	<package name="log" namespace="/log" extends="struts-default">
+		<action name="log_*" class="logAction" method="{1}">
+			<result name="logList">/jsp/auth/log/log_list.jsp</result>
+		</action>
+	</package> -->
+	
+	<!-- 首页初始化Action 
+	<package name="index" namespace="/index" extends="struts-default">
+		<action name="index_*" class="indexAction" method="{1}">
+			<result name="content">/content.jsp</result>
+		</action>
+	</package>-->
+	
+	<!-- 数据备份 
+	<package name="sjbf" namespace="/sjbf" extends="struts-default">
+		<action name="sjbf_*" class="sjbfAction" method="{1}">
+			<result name="showDataListSuc">/jsp/auth/sjbf/sjbf_bfgl.jsp</result>
+			
+			<result name="deleteFileSuc" type="redirect">/sjbf/sjbf_showDataList.do</result>
+			
+			
+		</action>
+	</package>
+	-->
+	
+</struts>

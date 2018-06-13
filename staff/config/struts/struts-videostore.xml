@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.2.dtd">
+<struts>
+
+	<package name="videostore" namespace="/videostore" extends="struts-default">
+		<action name="videostore_*" class="VideoStoreAction" method="{1}" >
+		<result name="videojsp">/videostore.jsp</result>
+		
+		<result name="goLoad">/jsp/videostore/load.jsp</result>
+		<result name="goVideoUpload" type="redirectAction">videostore_goVideoUpload.do</result>
+		<result name="videostore">/jsp/videostore/videostore.jsp</result>
+		<result name="videostoreDetail">/jsp/videostore/videostoreDetail.jsp</result>
+		<result name="shvideo">/jsp/system/projects.jsp</result>
+		
+		
+			<!-- 下载视频库视频 - 季 -->
+            <param name="fileName"></param>  
+            <result name="successVideo" type="stream">  
+                        <!-- 下载文件类型定义  -->  
+                <param name="contentType"> text/plain</param>  
+                        <!-- 下载文件处理方法 --> 
+                <param name="contentDisposition"> attachment;filename="${downloadChineseFileNameCzsc}"</param>  
+                        <!-- 下载文件输出流定义 -->
+                <param name="inputName">downloadFileVideo</param>  
+            </result>
+		
+		<!--  下载操作手册 -->
+            <param name="fileName"></param>  
+            <result name="successCj" type="stream">
+                        <!-- 下载文件类型定义  -->  
+                <param name="contentType"> text/plain</param>
+                        <!-- 下载文件处理方法 --> 
+                <param name="contentDisposition"> attachment;filename="${downloadChineseFileNameCzsc}"</param>
+                        <!-- 下载文件输出流定义 -->
+                <param name="inputName">downloadFileCzsc</param>
+            </result>
+            
+            
+            <!--  下载操作手册 -->
+            <param name="fileName"></param>  
+            <result name="successCzsc" type="stream">  
+                        <!-- 下载文件类型定义  -->  
+                <param name="contentType"> text/plain</param>  
+                        <!-- 下载文件处理方法 --> 
+                <param name="contentDisposition"> attachment;filename="${downloadChineseFileNameCzsc}"</param>  
+                        <!-- 下载文件输出流定义 -->  
+                <param name="inputName">downloadFileCzsc</param>  
+            </result>
+		
+		</action>
+	</package>
+
+
+
+	
+</struts>

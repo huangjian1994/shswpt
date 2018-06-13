@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.2.dtd">
+<struts>
+	<package name="selectvideo" namespace="/" extends="struts-default">
+		<action name="selectvideo_*" class="selectVideoAction" method="{1}" >
+		   <result name="selectvideojsp">/testvideo.jsp</result>
+		   <result name="index">/self-video.jsp</result>
+		   <result name="detail">/video1.jsp</result>
+		   <result name="ok">/self-video.jsp</result>
+		   <result name="selectvideostore">/jsp/videostore/videophone.jsp</result>
+		  <result name="userSelect">/jsp/system/authority.jsp</result>
+		</action>
+	</package>
+</struts>

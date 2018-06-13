@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.2.dtd">
+<struts>
+	<package name="notice" namespace="/notice" extends="struts-default">
+		<action name="notice_*" class="noticeAction" method="{1}" >
+		
+			<result name="noticeList" >/jsp/notice/notice_list.jsp</result>
+			<result name="toNoticeList" type="redirect">/notice/notice_list.do</result>
+			<result name="detail">/jsp/notice/notice_detail.jsp</result>
+		</action>
+		
+		<action name="message_*" class="messageAction" method="{1}">
+			<result name="messageList">/jsp/notice/message_list.jsp</result>
+			</action>
+	</package>
+</struts>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.2.dtd">
+<struts>
+
+	<package name="ssu" namespace="/ssu" extends="struts-default">
+		<action name="ssu_*" class="SsuAction" method="{1}" >
+		<result name="t" >/jsp/lb.jsp</result>
+		
+		</action>
+	</package>
+		
+	<package name="soa" namespace="/soa" extends="struts-default">
+		<action name="soa_*" class="SoaXXXAction" method="{1}" >
+		<result name="login" >/jsp/test.jsp</result>
+		<result name="error" >/jsp/error.jsp</result>
+		<result name="index" >/jsp/welcome.jsp</result>
+		</action>
+	</package>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<!-- 
+	
+	//我问下，这个相当于拼接了么%s
+		//oo这样啊，那现在，我就是把这个http://localhost:8080/shswpt/soa/soa_goInSys.do给人家了？是的，人家会把那2个参数给我带过，我再这样去请求
+		//是吧？
+		//你们的系统不需要登录 就可以访问么？
+		//是这样的，所有的第三方系统，都要同oa这个平台，这个OA相当于集成。不可以直接输入我们地址就访问，也不能是从我们的登录页面进去
+		//也不能从你们的登录页面进去？那你们之前怎么做的登录，不用了，就是直接访问，这个还没上线
+		//你们没有做登录功能啊，目前是这样的，不过，我老大在做权限了，我们这样，通过OA还要登录么？
+		//通过OA只能判断他是否应该进行系统登录，是这样的，通过这个，我们知道他是水务的用户，那就可以上我们的系统，我们要做的，就是用这个account 来判断他的权限
+		//你们这个还没有做完啊，还有很大一块，兄弟，这个很头疼，不是很大一块，那个视频转码没解决，上传就没用
+		//兄弟，你们这个系统。。直接去买腾讯的服务吧
+		//我们找了浙江三巨头之一的大华，你可以查查，在杭州，三巨头之一，专门做视频和监控的
+		//可以的，那只要提供视频空间和转码服务的接口 就可以直接调用了，根本不需要自己实现
+		//理论上，是这样的，实际上，麻痹，我想骂人，日吗从开始，到现在，就我和另一个人一起搞，写代码，我就说是写代码的人！！
+		//就2个！！！！还他妈天天喊我们去对接！！ 搞到现在，老子功能都没写几个！！！
+		//对接？就是跟大华的那个，做视频监控的对接，那个监控的对接，麻烦的很，用的还不是他们的平台，贼费事
+	
+	 -->
+
+	
+</struts>

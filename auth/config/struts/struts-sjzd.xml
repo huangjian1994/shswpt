@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.2.dtd">
+<struts>
+	<package name="sjzd" namespace="/sjzd" extends="struts-default">
+		<action name="sjzd_*" class="sjzdAction" method="{1}" >
+			<result name="viewInfo" >/jsp/auth/sjzd/sjzd_view.jsp</result>
+			<result name="showInfo" >/jsp/auth/sjzd/sjzd_show.jsp</result>
+			<result name="addInfo" >/jsp/auth/sjzd/sjzd_add.jsp</result>
+			<result name="editInfo" >/jsp/auth/sjzd/sjzd_edit.jsp</result>
+		</action>
+	</package>
+</struts>
