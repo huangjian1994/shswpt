@@ -30,7 +30,7 @@
       <option name="IGNORE_JAVADOC_PERIOD" value="true" />
       <option name="IGNORE_DUPLICATED_THROWS" value="false" />
       <option name="IGNORE_POINT_TO_ITSELF" value="false" />
-      <option name="myAdditionalJavadocTags" value="date,Create,author:hj,author：hj" />
+      <option name="myAdditionalJavadocTags" value="date,Create,author:hj,author：hj,Description：查出自建设备，返回json,2017-4-11上午10:50:06,Description：查出共享设备，返回json,author:,Time2017-5-10下午01:44:48,Description：" />
     </inspection_tool>
   </profile>
 </component>

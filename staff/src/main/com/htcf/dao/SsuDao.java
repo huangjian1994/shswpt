@@ -150,4 +150,13 @@ public interface SsuDao {
 	 */
 	public List<?> fetchFqsp();
 	
+	/**
+	 *
+	* @Description： 自建和共享设备中查询属于中国对外博览会的设备
+	*@author:hj
+	*@2018-6-14下午02:46:21
+	*@param 
+	*@return
+	 */
+	public List<?> fetchZwbl();
 }

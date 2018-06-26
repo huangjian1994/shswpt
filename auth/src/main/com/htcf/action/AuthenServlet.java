@@ -31,13 +31,11 @@ public class AuthenServlet extends HttpServlet {
 	private String tempURL = null, propertiesURL = null;
 	private Properties props = null;
 
-	@Override
 	public void init(ServletConfig cfg) throws ServletException {
 		tempURL = cfg.getInitParameter("url");
 		propertiesURL = cfg.getInitParameter("propertiesURL");
 	}
 
-	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws IOException, ServletException {
 		HttpServletRequest request = (HttpServletRequest) req;
@@ -401,7 +399,6 @@ public class AuthenServlet extends HttpServlet {
 		request.getRequestDispatcher(tempURL).forward(request, response);
 	}
 
-	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws IOException, ServletException {
 		doGet(req, resp);
@@ -413,9 +410,8 @@ public class AuthenServlet extends HttpServlet {
 	private boolean isNotNull(String str) {
 		if (str == null || str.trim().equals(""))
 			return false;
-		else {
+		else
 			return true;
-		}
 	}
 
 	/**

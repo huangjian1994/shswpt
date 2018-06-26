@@ -145,6 +145,16 @@ public interface SsuService {
 	
 	/**
 	 * 
+	* @Description：查询自建和共享设备中查询属于中国对外博览的设备
+	*@author:hj
+	*@2017-5-12下午03:03:54
+	*@param 
+	*@return
+	 */
+	public List<?> fetZwbl();
+	
+	/**
+	 * 
 	* @Description：查询分区设备
 	*@author:hj
 	*@2018-3-28上午10:03:54

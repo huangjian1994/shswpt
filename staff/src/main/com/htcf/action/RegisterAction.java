@@ -17,73 +17,44 @@ import com.htcf.service.RegisterService;
 
 @Controller("RegisterAction")
 @Scope("prototype")
-/**
-*Description :设备注册
-*@author：hj
-*@Create 2018-6-13 14:28
-*/
 public class RegisterAction {
 	
 	@Autowired
 	private RegisterService registerServer;
-
-	/**
-	 *共享摄像头
-	 */
-	private EquipmentShare share = new EquipmentShare();
-
-	/**
-	 * 自建摄像头设备
-	 */
-	private EquipmentSelf self = new EquipmentSelf();
-
-	/**
-	 * 无人机设备
-	 */
-	private Uav uav =new Uav();
-
-	/**
-	 * 自建视频集合
-	 */
-	private List<?> selfList;
-	private List<?> shareList;
-	private List<?> uavList;
-
-	/**
-	 * equipmentName 设备名称
-	 * equipmentUser 设备所属单位
-	 * equipmentLocation 设备位置
-	 * equipmentCode 设备编码
-	 * equipmentType 设备型号
-	 * Type设备种类0：自建摄像机  1：共享摄像机 2：无人机
-	 * equipmentJd 摄像头经度
-	 * equipmentWd 摄像头纬度
-	 * ssgc 设备所属工程
-	 */
-	private String equipmentName;
-	private String equipmentUser;
-	private String equipmentLocation;
-	private String equipmentCode;
-	private String equipmentType;
-	private String Type;
-	private String equipmentJd;
-	private String equipmentWd;
-	private String ssgc;
 	
-
-
-	/**
-	*Description :获取时间
-	*@param
-	*@return
-	*@author：hj
-	*@Create 2018-6-13 14:35
-	*/
+	//共享摄像头设备
+	private EquipmentShare share = new EquipmentShare();
+	
+	//自建摄像头设备
+	private EquipmentSelf self = new EquipmentSelf();
+	
+	//无人机设备
+	private Uav uav =new Uav();
+	
+	//集合
+	private List<?> selfList;//自建视频集合
+	private List<?> shareList;//自建视频集合
+	private List<?> uavList;//自建视频集合
+	
+	
+	private String equipmentName;//设备名称
+	private String equipmentUser;//设备所属单位
+	private String equipmentLocation;//设备位置
+	private String equipmentCode;//设备编码
+	private String equipmentType;//设备型号
+	private String Type;//设备种类0：自建摄像机  1：共享摄像机 2：无人机
+	private String equipmentJd;//摄像头经度
+	private String equipmentWd;//摄像头纬度
+	private String ssgc;//设备所属工程
+	
+	
+	
+	//获取时间
 	public String getTime(){
 		//入库时间
 		Calendar c = Calendar.getInstance();
 		Date date = c.getTime();
-		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//可以方便地修改日期格式
 		String datetime = dateFormat.format(date);
 		System.out.println("系统当前时间："+datetime);
 		return datetime;
@@ -149,7 +120,7 @@ public class RegisterAction {
 			uav.setName(equipmentName);
 			uav.setUser(equipmentUser);
 			uav.setCode(equipmentCode);
-			uav.setType(equipmentType);
+			uav.setType(equipmentType);//无人机型号
 			
 			uav.setApprove("否");
 			uav.setDate(this.getTime());
@@ -168,7 +139,7 @@ public class RegisterAction {
 	 *@Time2017-3-30下午02:31:05
 	 */
 	public String getE(){
-
+		System.out.println("666666666666666666666666666");
 		selfList = registerServer.fetSelf(equipmentLocation, equipmentUser);
 		if(selfList.size()!=0){
 			self = new EquipmentSelf();

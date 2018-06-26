@@ -169,8 +169,7 @@ public class LogAction extends BaseAction {
 			Map<String,Object> map = new LinkedHashMap<String,Object>(2);
 			map.put("total", pageBean.getTotalRecord());
 			map.put("rows", rows);
-//			response.setCharacterEncoding("utf-8");
-			response.setContentType("text/html;charset=UTF-8");
+			response.setCharacterEncoding("utf-8");
 			JSONObject json = JSONObject.fromObject(map);
 			System.out.println(json.toString());
 			response.getWriter().write(json.toString());

@@ -19,33 +19,21 @@ import com.htcf.entity.Uav;
 import com.htcf.service.SsuService;
 import com.htcf.util.StringUtil;
 
-/**
-*Description :
-*@param
-*@return
-*@author：hj
-*@Create 2018-6-15 10:08
-*/
 @Controller("SsuAction")
 @Scope("prototype")
 public class SsuAction extends BaseAction {
 	
 	@Autowired
 	private SsuService ssuService;
-
-	//父节点
-	private String pid;
-	//节点类型
-	private String type;
-
-	//无人机集合
-	private List<?> uavList;
-	//自建视频设备集合
-	private List<?> selfList;
-	//共享视频设备集合
-	private List<?> shareList;
-	//父节点
-	private List<?> FList;
+	
+	private String pid;//父节点
+	private String type;//节点类型
+	
+	
+	private List<?> uavList;//无人机集合
+	private List<?> selfList;//自建视频设备集合
+	private List<?> shareList;//共享视频设备集合
+	private List<?> FList;//父节点
 	private List<?> fxList;//分享设备树
 	private List<?> zdgcList;//重大工程
 	private List<?> fxzdList;//防汛重点
@@ -110,9 +98,24 @@ public class SsuAction extends BaseAction {
 			System.out.println("有值");
 			for(int i = 0 ;i<selfList.size();i++){
 				Object[] obj = (Object[])selfList.get(i);
+//				sss.append("[").
+//				append("{id:").append(obj[0]).append(",name:'").append(obj[1]).append("',code:'").append(obj[2])
+//				.append("',APPROVE:'").append(obj[3]).append("',DATE:'").append(obj[4]).append("',USEFUL:'").append(obj[5])
+//				.append("',ADDRESS:").append(obj[6]).append("',LONGITUDE'").append(obj[7]).append("',LATITUDE:'").append(obj[8])
+//				.append("',USER:'").append(obj[9]).append("',TYPE:'").append(obj[10]).append("',dm:'").append(obj[11])
+//				.append("',dwdm:'").append(obj[12]).append("',ssgc:'").append(obj[13])
+//				.append("'}").append("]");
+//				System.out.println("++++拼接的+++++++++++++"+sss);
 			}
 		}
-
+//		try{
+//	    	System.out.println("sb="+sss);
+//	    	response.setContentType("text/html;charset=utf-8");
+//	    	response.getWriter().println(sss.toString());
+//	    }catch (IOException e) {
+//	    	e.printStackTrace();
+//	    }
+		
 		HttpServletResponse response = this.getHttpServletResponse();
 		response.setContentType("text/plain;charset=utf-8");
 		PrintWriter out = null;
@@ -186,7 +189,9 @@ public class SsuAction extends BaseAction {
 	    		System.out.println("第"+i+"个要素="+exam[0]);
 				sb.append("{id:").append(exam[0]).append(",state:'closed',")
 				.append("text:'").append(exam[1]).append("',type:1");
-				if("1".equals(exam[0])){
+				
+				if( exam[0].equals("1") ){
+					System.out.println("+++++++++++++++++++get");
 					List<?> dzList = this.ssuService.fetchSelfList();
 					if(dzList !=null && dzList.size() !=0){
 						sb.append(",");
@@ -199,6 +204,7 @@ public class SsuAction extends BaseAction {
 							//查询该节点下的视频设备
 							List<?> wzList = this.ssuService.fetSelfobj(dz[0].toString());
 							if(wzList !=null && wzList.size() !=0){
+//								System.out.println("++++++++++++该节点查询:");
 								sb.append(",");
 								sb.append("children:[");
 								for(int k = 0; k < wzList.size(); k++){
@@ -209,6 +215,7 @@ public class SsuAction extends BaseAction {
 									sb.append("{id:").append(objs[0]).append(",")
 									.append("text:'").append(objs[3]).append("',type:3,lev:'"+objs[4]+"'")
 									.append(",approve:'"+objs[7]+"' ");
+									//结尾
 									if(k!=wzList.size()-1){
 										sb.append("},");
 									}else{
@@ -230,7 +237,8 @@ public class SsuAction extends BaseAction {
 						}else{
 							System.out.println("无自建视频。");
 						}
-				}else if("2".equals(exam[0])){
+				}else if(exam[0].equals("2")){
+//					System.out.println("+++++++++++++++++++get");
 					List<?> dzList = this.ssuService.fetchSareList();
 					if(dzList !=null && dzList.size() !=0){
 						sb.append(",");
@@ -264,6 +272,8 @@ public class SsuAction extends BaseAction {
 							}else{
 								System.out.println("无该单位的。。。。");
 							}
+							
+							//数据元结尾
 				    		if(j!=dzList.size()-1){
 				    			sb.append("},");
 				    		}else{
@@ -275,6 +285,7 @@ public class SsuAction extends BaseAction {
 							System.out.println("无共享视频。。。。");
 						}
 				}
+			
 				//五要素结尾
 	    		if(i!=FList.size()-1){
 	    			sb.append("},");
@@ -291,6 +302,7 @@ public class SsuAction extends BaseAction {
 		    	e.printStackTrace();
 		    }
 		    return null;
+		
 	}
 	
 
@@ -449,7 +461,46 @@ public class SsuAction extends BaseAction {
 					return null;
 				}
 	
-	
+				/**
+				 * @Description：自建和共享设备查询 中博对外博览会防汛设备
+				 *@author:
+				 *@Time2017-5-10下午01:58:47 
+				 *@return
+				 */
+					public String fetchZwbl(){
+						try {
+							zdgcList = this.ssuService.fetZwbl();
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+						
+						
+						if(zdgcList.size()>0){
+							System.out.println(zdgcList.size());
+							System.out.println("有分享值");
+							for(int i = 0 ;i<zdgcList.size();i++){
+								Object[] obj = (Object[])zdgcList.get(i);
+								System.out.println("+++++++++++++++++"+obj[0]);
+				
+								System.out.println("+++++++++++++++++"+obj[1]);
+							}
+						}
+						HttpServletResponse response = this.getHttpServletResponse();
+						response.setContentType("text/plain;charset=utf-8");
+						PrintWriter out = null;
+						try {
+							out = response.getWriter();
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+						JsonConfig config = new JsonConfig();
+						config.setCycleDetectionStrategy(CycleDetectionStrategy.LENIENT); // 自动为我排除circle
+						JSONArray arr = JSONArray.fromObject(zdgcList, config);
+						System.out.println("输出json"+arr);
+						out.print(arr.toString());
+						out.flush();
+						return null;
+					}
 	
 				/**
 				 * @Description：查询分区设备

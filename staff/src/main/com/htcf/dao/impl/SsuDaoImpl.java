@@ -306,5 +306,25 @@ public class SsuDaoImpl extends BaseDAOImpl<Object, Serializable> implements Ssu
 		return null;
 	}
 	
+	/**
+	 * 自建和共享设备中查询属于中国对外博览会的设备
+	* @Description：
+	*@author:hj
+	*@2017-5-12下午02:41:30
+	*@param 
+	*@return
+	 */
+	public List<?> fetchZwbl(){
+		System.out.println("------查询中国对外博览会------");
+		String sql = " select id,outvideo_name, outvideo_code, outvideo_approve, outvideo_date, " +
+		" outvideo_useful, outvideo_address, outvideo_longitude, outvideo_latitude, outvideo_user," +
+		" outvideo_type,dm,dwdm,ssgc,gcsx from share_video where OUTVIDEO_APPROVE ='是' and ssgc ='中国对外博览会'";
+		List<?> l = this.findBySQL(sql);
+		if(l != null && l.size()!=0){
+			return l ;
+		}
+		return null;
+		
+	}
 	
 }

@@ -102,4 +102,9 @@ public class SsuServiceImpl implements SsuService {
 	public List<?> fetFqsp(){
 		return ssuDao.fetchFqsp();
 	}
+	
+	//@Operate(description="查询自建和共享设备中查询属于中国对外博览会的设备")
+	public List<?> fetZwbl(){
+		return ssuDao.fetchZwbl();
+	}
 }
