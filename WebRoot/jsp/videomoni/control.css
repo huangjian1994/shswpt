@@ -1,0 +1,33 @@
+.main_control{
+	width:200px;
+	height:210px;
+	border:1px solid #b3bbc9;
+	border-radius: 5px;
+	background:#f1f1f1;
+	position: relative;
+}
+.cbg{width:130px;
+	height:130px;
+	background:url(img/cbg.png);
+	margin:10px auto;
+}
+table{border-collapse:collapse;}
+
+ .cbg table tr td{ /*border:1px solid red; */
+ 	         position:relative;
+            } 
+ a{cursor:pointer;}           
+ .down_{width:130px;
+        margin:5px auto;
+        height:50px;
+        text-align:center;} 
+  .down_ table tr{margin-bottom: 5px;} 
+  .suo{position:absolute;
+       left:10px;
+       top:5px;}  
+  .shubiao{position:absolute;
+       right:10px;
+   	   top:5px;} 
+  .dingwei {position:absolute;
+       left:10px;
+   	   top:110px;}
