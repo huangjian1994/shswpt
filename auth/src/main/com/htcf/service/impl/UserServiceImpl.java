@@ -4,24 +4,24 @@ package com.htcf.service.impl;
 
 import java.util.List;
 
+import com.htcf.dao.IUserDAO;
+import com.htcf.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.htcf.dao.IRoleDAO;
-import com.htcf.dao.IUserDAO;
 import com.htcf.dao.IUserRoleDAO;
 import com.htcf.entity.Role;
 import com.htcf.entity.User;
 import com.htcf.entity.UserForm;
 import com.htcf.entity.UserRole;
-import com.htcf.service.IUserService;
 import com.htcf.util.Operate;
 import com.htcf.util.PageBean;
 import com.htcf.util.StringUtil;
 
 
 @Service(value="userService")
-public class UserServiceImpl implements IUserService{
+public class UserServiceImpl implements IUserService {
 
 	
 	@Autowired

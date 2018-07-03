@@ -48,7 +48,7 @@ public class Organization
 
   @Id
   @GeneratedValue
-  @Column(name="ID", unique=true, nullable=false, precision=16, scale=0)
+//  @Column(name="ID", unique=true, nullable=false, precision=16, scale=0)
   public Long getId()
   {
     return this.id;
@@ -59,7 +59,7 @@ public class Organization
     this.id = id;
   }
 
-  @Column(name="CODE", length=20)
+//  @Column(name="CODE", length=20)
   public String getCode()
   {
     return this.code;
@@ -70,7 +70,7 @@ public class Organization
     this.code = code;
   }
 
-  @Column(name="NAME", length=50)
+//  @Column(name="NAME", length=50)
   public String getName()
   {
     return this.name;
@@ -81,7 +81,7 @@ public class Organization
     this.name = name;
   }
 
-  @Column(name="FULLNAME", length=100)
+//  @Column(name="FULLNAME", length=100)
   public String getFullName()
   {
     return this.fullName;
@@ -92,7 +92,7 @@ public class Organization
     this.fullName = fullName;
   }
 
-  @Column(name="ADDRESS", length=200)
+//  @Column(name="ADDRESS", length=200)
   public String getAddress()
   {
     return this.address;
@@ -103,7 +103,7 @@ public class Organization
     this.address = address;
   }
 
-  @Column(name="PID", precision=16, scale=0)
+//  @Column(name="PID", precision=16, scale=0)
   public Long getPid()
   {
     return this.pid;
@@ -114,7 +114,7 @@ public class Organization
     this.pid = pid;
   }
 
-  @Column(name="ISLEAF", length=10)
+//  @Column(name="ISLEAF", length=10)
   public String getIsLeaf()
   {
     return this.isLeaf;
@@ -125,7 +125,7 @@ public class Organization
     this.isLeaf = isLeaf;
   }
 
-  @Column(name="LAYER", precision=2, scale=0)
+//  @Column(name="LAYER", precision=2, scale=0)
   public Long getLayer()
   {
     return this.layer;
@@ -136,7 +136,7 @@ public class Organization
     this.layer = layer;
   }
 
-  @Column(name="MANAGER", length=20)
+//  @Column(name="MANAGER", length=20)
   public String getManager()
   {
     return this.manager;
@@ -147,7 +147,7 @@ public class Organization
     this.manager = manager;
   }
 
-  @Column(name="MANTEL", length=20)
+//  @Column(name="MANTEL", length=20)
   public String getManTel() {
     return this.manTel;
   }
@@ -157,7 +157,7 @@ public class Organization
     this.manTel = manTel;
   }
 
-  @Column(name="DESCRIPTION", length=100)
+//  @Column(name="DESCRIPTION", length=100)
   public String getDescription() {
     return this.description;
   }
@@ -167,7 +167,7 @@ public class Organization
     this.description = description;
   }
 
-  @Column(name="SEQUENCE", precision=2, scale=0)
+//  @Column(name="SEQUENCE", precision=2, scale=0)
   public Long getSequence() {
     return this.sequence;
   }
@@ -177,7 +177,7 @@ public class Organization
     this.sequence = sequence;
   }
 
-  @Column(name="ROLE_ID", precision=16, scale=0)
+//  @Column(name="ROLE_ID", precision=16, scale=0)
   public Long getRole_id()
   {
     return this.role_id;

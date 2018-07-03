@@ -43,7 +43,7 @@ public class Sjzd implements java.io.Serializable {
 	// Property accessors
 	@Id
 	@GeneratedValue
-	@Column(name = "ID", unique = true, nullable = false, precision = 16, scale = 0)
+//	@Column(name = "ID", unique = true, nullable = false, precision = 16, scale = 0)
 	public Long getId() {
 		return this.id;
 	}
@@ -52,7 +52,7 @@ public class Sjzd implements java.io.Serializable {
 		this.id = id;
 	}
 
-	@Column(name = "FID", precision = 16, scale = 0)
+//	@Column(name = "FID", precision = 16, scale = 0)
 	public Long getFid() {
 		return fid;
 	}
@@ -61,7 +61,7 @@ public class Sjzd implements java.io.Serializable {
 		this.fid = fid;
 	}
 	
-	@Column(name = "CONTENT", length = 100)
+//	@Column(name = "CONTENT", length = 100)
 	public String getContent() {
 		return content;
 	}
@@ -70,7 +70,7 @@ public class Sjzd implements java.io.Serializable {
 		this.content = content;
 	}
 
-	@Column(name = "BZ", length = 100)
+//	@Column(name = "BZ", length = 100)
 	public String getBz() {
 		return bz;
 	}
@@ -79,7 +79,7 @@ public class Sjzd implements java.io.Serializable {
 		this.bz = bz;
 	}
 
-	@Column(name = "ISLEAF", length = 10)
+//	@Column(name = "ISLEAF", length = 10)
 	public String getIsLeaf() {
 		return isLeaf;
 	}
@@ -88,7 +88,7 @@ public class Sjzd implements java.io.Serializable {
 		this.isLeaf = isLeaf;
 	}
 
-	@Column(name = "LAYER", precision = 16, scale = 0)
+//	@Column(name = "LAYER", precision = 16, scale = 0)
 	public Long getLayer() {
 		return layer;
 	}

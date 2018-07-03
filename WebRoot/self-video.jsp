@@ -30,6 +30,11 @@
 			media="screen" />
 		<link rel="stylesheet" href="<%=basePath %>/css/left-nav.css" />
 		<style type="text/css">
+            .tundra .dijitTitlePaneTitle{
+                background:#0074d9;
+                color:white;
+                padding:3px 9px;                
+            }
 			.menu {
 				position: fixed;
 				top: 3px;
@@ -321,17 +326,14 @@
 			<span>本系统不断开发完善中 如有问题请联系：52397000-6641</span>
 		</div>
 		<div id="MyMapDiv" class="MapClass">
-   			<div data-dojo-type="dijit/TitlePane"
-   				data-dojo-props="title:'底图', closable:false, open:false"
-   				style="position: absolute; right: 113px; top: 14px; z-Index: 999;">
-   				<div data-dojo-type="dijit/layout/ContentPane"
-   					style="width: 400px; height: 120px; overflow: auto;">
+   			<div data-dojo-type="dijit/TitlePane" data-dojo-props="title:'底图', closable:false, open:false" style="position: absolute; right: 113px; top: 14px; z-Index: 999;">
+   				<div data-dojo-type="dijit/layout/ContentPane" style="width: 400px; height: 120px; overflow: auto;">
    					<div id="basemapGallery"></div>
    				</div>
    			</div>
    			<div style="position:absolute; right:20px; top:14px;z-Index:999;">
-   				<button type="button" id="polygon" onclick="box()" style="width: 60px;height: 28px;background-color: #dedede;border-radius: 2px;border:1px solid #bfbfbf">
-   					<img src="images/bg-qx.png" alt="圈选"   style="width: 30px;height: 26px;"/>
+   				<button type="button" id="polygon" onclick="box()" style="width: 60px;height: 28px;background-color: #0074db;border-radius: 2px;border:1px solid #bfbfbf">
+   					<img src="images/ElementCircle16.png" alt="圈选" title="圈选" style="width: 30px;height: 26px;"/>
    				</button>
    		    </div>
     	     <div id="boxdiv" class="Box">

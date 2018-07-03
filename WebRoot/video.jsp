@@ -422,8 +422,8 @@
 						登陆登出</br>
 						IP： &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;<input type="text" id="textIP" value="31.16.10.79" size="10" /></br>
 						端口： &nbsp;&nbsp; <input type="text" id="textPort" value="9000" size="10" /></br>
-						用户名：&nbsp;<input type="text" id="textUser" value="admin" size="10" /></br>
-						密码： &nbsp;&nbsp;&nbsp;<input type="text" id="textPassword" value="admin123" size="10" /></br>
+						用户名：&nbsp;<input type="text" id="textUser" value="system" size="10" /></br>
+						密码： &nbsp;&nbsp;&nbsp;<input type="text" id="textPassword" value="adm12345" size="10" /></br>
 						</br>
 
 						<input type="button" id="buttonLogin" value="登录" class="button" onclick="return ButtonLogin_onclick()" />
