@@ -64,15 +64,25 @@ public class SelectVideoAction extends BaseAction{
 		return "videoSelect";
 	}
     
+    
+ //权限功能入口代码
     public String fetchUser(){
 		HttpServletRequest request= this.getHttpServletRequest();
-		pageBean=this.processPageBean(request);
-		pageBean.setPageRecord(10);
-		userList = selectVideoService.fetchUserList(user,pageBean);
-		//12341
-		//request.setAttribute("videoList", videoList);
-		request.getSession().setAttribute("videoList", videoList);
-		return "userSelect";
+		Users user =(Users) session.get("user");
+		if(user != null){
+			if(user.getUser_type().equals("管理员")){
+					pageBean=this.processPageBean(request);
+					pageBean.setPageRecord(10);
+					userList = selectVideoService.fetchUserList(user,pageBean);
+					//12341
+					//request.setAttribute("videoList", videoList);
+					request.getSession().setAttribute("videoList", videoList);
+					return "userSelect";
+				}else
+					return "userSelectno";
+		}else
+			return "userSelectno";
+		
 	}
 
 	/**

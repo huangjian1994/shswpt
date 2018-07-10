@@ -1,18 +1,43 @@
 package com.htcf.action;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
-import com.htcf.service.*;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import net.sf.json.JSONObject;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.StringUtils;
 
 import com.htcf.entity.Menu;
+import com.htcf.entity.OperateLog;
 import com.htcf.entity.Role;
 import com.htcf.entity.Sjzd;
 import com.htcf.entity.User;
 import com.htcf.entity.UserForm;
 import com.htcf.entity.UserRole;
+import com.htcf.service.IMenuService;
+import com.htcf.service.IOperateLogService;
+import com.htcf.service.IRoleService;
+import com.htcf.service.ISjzdService;
+import com.htcf.service.IUserService;
+
+
 
 
 @Controller("userAction")

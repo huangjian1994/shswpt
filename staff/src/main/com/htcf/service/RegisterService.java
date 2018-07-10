@@ -45,11 +45,11 @@ public interface RegisterService {
 	 *@param User用户或所属工程
 	 *@return
 	 */
-	public List<EquipmentSelf> fetSelf(String Address,String User );
+	public List<EquipmentSelf> fetSelf(String Address, String User);
 	
-	public List<EquipmentShare> fetShare(String Address,String User );
+	public List<EquipmentShare> fetShare(String Address, String User);
 	
-	public List<Uav> fetUav(String Address,String User );
+	public List<Uav> fetUav(String Address, String User);
 	
 	/**
 	 * 

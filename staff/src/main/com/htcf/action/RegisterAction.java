@@ -155,7 +155,10 @@ public class RegisterAction {
 		
 	}
 
-	
+	/**
+	 * 
+	 * @return
+	 */
 	
 	
 	

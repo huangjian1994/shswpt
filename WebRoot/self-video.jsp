@@ -24,20 +24,21 @@
 		<link rel="stylesheet" type="text/css"
 			href="http://31.16.10.77:80/arcgis_js_v314_api/library/3.20/3.20/dijit/themes/tundra/tundra.css" />
 		<link rel="stylesheet" type="text/css"
-			href="http://31.16.10.77:80/arcgis_js_v314_api/library/3.20/3.20/esri/css/esri.css" />
+			href="http://31.16.10.77/arcgis_js_v314_api/library/3.20/3.20/esri/css/esri.css" />
 		<link rel="stylesheet" type="text/css" href="<%=basePath %>/iconfont/iconfont.css" />
 		<link rel="stylesheet" href="<%=basePath %>/css/16sucai.css" type="text/css"
 			media="screen" />
 		<link rel="stylesheet" href="<%=basePath %>/css/left-nav.css" />
 		<style type="text/css">
             .tundra .dijitTitlePaneTitle{
-                background:#0074d9;
+                background:transparent;
                 color:white;
-                padding:3px 9px;                
+                padding:3px 5px 3px 2px;                
             }
 			.menu {
 				position: fixed;
 				top: 3px;
+				opacity:0.6;
 				/* right: 1000px; */
 				left: 81%;
 				width: 5.3%;
@@ -56,7 +57,7 @@
 			}
 			.Box{
 			    display:none;
-                width:350px;
+                width:450px;
                 height:480px;
                 top:100px;
                 right:50%;
@@ -112,7 +113,7 @@
 			    color: inherit;
 			}
             .Box-content{
-                width:350px;
+                width:450px;
                 padding:10px;
                 max-height:430px;
                 background-color:white;
@@ -123,34 +124,27 @@
             	list-style:none;
             }
             #phone-insert .yiji a{
+                color:#111111;
             	text-decoration: none;
             }
 
             #phone-insert .yiji .yiji-menu{
 			    padding: 10px 15px;
 			    font-size:15px;
-			    color:#b8c7ce;
+			    color:#111111;
 			    border-bottom: 1px solid transparent;
 			    border-top-left-radius: 3px;
 			    border-top-right-radius: 3px;
 			    margin-bottom:3px;
 			   
 			}
-			#phone-insert .yiji .yiji-menu:hover{
-				color: white;
-    			background: #1e282c;
+			#phone-insert .yiji .yiji-menu:hover,#phone-insert .yiji .erji-menu:hover,#phone-insert .yiji .sanji-menu li:hover{
+    			background: #3c8dbc;
     			border-left-color: #3c8dbc;
 			}
-			#phone-insert .yiji .erji-menu:hover{
-				color: white;
-    			background: #1e282c;
-    			border-left-color: #3c8dbc;
-			}
-			#phone-insert .yiji .sanji-menu li:hover{
-				color: white;
-    			background: #1e282c;
-    			border-left-color: #3c8dbc;
-			}
+			#phone-insert .yiji-menu:hover a,#phone-insert .erji-menu:hover a,#phone-insert .sanji-menu:hover a{
+                color:white;
+            }
 
             #phone-insert .yiji ul li{
             	padding:10px 0 10px 30px;
@@ -326,14 +320,14 @@
 			<span>本系统不断开发完善中 如有问题请联系：52397000-6641</span>
 		</div>
 		<div id="MyMapDiv" class="MapClass">
-   			<div data-dojo-type="dijit/TitlePane" data-dojo-props="title:'底图', closable:false, open:false" style="position: absolute; right: 113px; top: 14px; z-Index: 999;">
+   			<div title="圈选" data-dojo-type="dijit/TitlePane" data-dojo-props="title:'底图', closable:false, open:false" style="position: absolute; right: 113px; top: 14px; z-Index: 999;">
    				<div data-dojo-type="dijit/layout/ContentPane" style="width: 400px; height: 120px; overflow: auto;">
    					<div id="basemapGallery"></div>
    				</div>
    			</div>
-   			<div style="position:absolute; right:20px; top:14px;z-Index:999;">
-   				<button type="button" id="polygon" onclick="box()" style="width: 60px;height: 28px;background-color: #0074db;border-radius: 2px;border:1px solid #bfbfbf">
-   					<img src="images/ElementCircle16.png" alt="圈选" title="圈选" style="width: 30px;height: 26px;"/>
+   			<div style="position:absolute; right:20px; top:14px;z-Index:999;" title="圈选">
+   				<button type="button" id="polygon" onclick="box()" style="padding:3px 5px 3px 2px;width: 74px;height:38px;background-color: transparent;border-radius: 2px;border:1px solid #bfbfbf">
+   					<img src="images/qx.png" alt="圈选" title="圈选" style="width: 50px;height: 30px;margin-left:9px;"/>
    				</button>
    		    </div>
     	     <div id="boxdiv" class="Box">
@@ -378,6 +372,11 @@
 	                            <img src="images/gxsp1.png" alt="共享视频" title="共享视频"/>
 	                        </a>
 						</li>
+                        <li class="nav-list" onclick="videoShow('.sj','手机')">
+                            <a class="click-a" style="padding: 0;" href="#" target="middle">
+                                <img src="images/ydd.png" alt="手机" title="移动端"/>
+                            </a>
+                        </li>
       					<li class="nav-list" onclick="videoShow('.wrj','无人机')">
 							<a class="click-a" style="padding: 0;" href="#" target="middle">
 								<img src="images/wrj1.png" alt="无人机" title="无人机"/>
@@ -388,16 +387,17 @@
 								<img src="images/zhc.png" alt="指挥车" title="指挥车"/>
 							</a>
 						</li>
-						<!-- <li class="nav-list">
-							<a class="click-a" style="padding: 0;" href="#" target="middle">
-		                        <img src="images/zhc.png" alt="分区视频" title="分区视频"/> 
-		                    </a>
-						</li> -->
+                        
 					</ul>
 				</li>
 				<li id="spzt">
 					<a class="sp" href="#" onclick="showPoint('显示全部视频')">专<br/>题</a>
 					<ul class="spzt">
+						<li class="nav-list" onclick="videoShow('.zwbl','中国对外进口博览会')">
+                            <a class="click-a" style="padding: 0;" href="#" target="middle">
+                                <img src="images/dwbl.png" alt="中国对外进口博览会" title="中国对外进口博览会"/>
+                            </a>
+                        </li>
 						<li class="nav-list" onclick="videoShow('.zdgc','重大工程')">
 							<a class="click-a" style="padding: 0;" href="#" target="middle">
 								<img src="images/zdgc1.png" alt="重大工程" title="重大工程"/>
@@ -405,34 +405,19 @@
 						</li>
 						<li class="nav-list" onclick="videoShow('.fxzd','防汛重点')">
 							<a class="click-a" style="padding: 0;" href="#" target="middle">
-								<img src="images/fxzd1.png" alt="防汛重点" title="防汛重点" />
+								<img src="images/fxzd1.png" alt="防汛重点区域" title="防汛重点区域" />
 							</a>
 						</li>
 						<li class="nav-list" onclick="videoShow('.zxhdzz','中小河道整治')">
 							<a class="click-a" style="padding: 0;" href="#" target="middle">
 								<img src="images/zxhdzz.png" alt="中小河道整治" title="中小河道整治"/>
 							</a>
-						</li>
-						<li class="nav-list" onclick="videoShow('.sj','手机')">
-							<a class="click-a" style="padding: 0;" href="#" target="middle">
-								<img src="images/ydd.png" alt="手机" title="移动端"/>
-						    </a>
-						</li>
-						<li class="nav-list" onclick="videoShow('.wrj','无人机')">
-							<a class="click-a" style="padding: 0;" href="#" target="middle">
-								<img src="images/wrj1.png" alt="无人机" title="无人机"/>
-							</a>
-						</li>
-						<li class="nav-list" onclick="videoShow('.zhc','指挥车')">
-							<a class="click-a" style="padding: 0;" href="#" target="middle">
-								<img src="images/zhc.png" alt="指挥车" title="指挥车"/>
-							</a>
-						</li>
-                        <li class="nav-list" onclick="videoShow('.zwbl','中国对外进口博览会')">
-      	                    <a class="click-a" style="padding: 0;" href="#" target="middle">
-                                <img src="images/dwbl.png" alt="中国对外进口博览会" title="中国对外进口博览会"/>
+						</li>						
+                        <li class="nav-list">
+                            <a class="click-a" style="padding: 0;" href="zdgc-video.jsp" target="_top">
+                                <img src="images/zjz.png" alt="上海市水务重大工程危险源视频监控平台" title="上海市水务重大工程危险源视频监控平台"/>
                             </a>
-                        </li>
+                        </li>                       
 					</ul>
 				</li>
 				<li id="spfq" onclick="videoShow('.fqsp')">
@@ -485,7 +470,7 @@
 					<img class="close" src="<%=basePath %>/images/youjt.png" onclick="closeVideo(this)"/>
 					<div class="content">
 						<div class="title-menu">
-							<span>防汛重点</span>
+							<span>防汛重点区域</span>
 						</div>
 						<div id="fxzd-insert" class="insert">
 
@@ -588,9 +573,9 @@
                                     </li>
 									<ul style="" id ="menu1">
 										<ul style="" class="sanji-menu" id = "menu3" ></ul>
-										<li><a  onclick="video('1000000@011$1$0$0','指挥车01')">指挥车摄像1</a></li>
-										<li><a  onclick="video('1000000@011$1$0$1','指挥车01')">指挥车摄像2</a></li>
-										<li><a  onclick="video('1000000@011$1$0$2','指挥车01')">指挥车摄像3</a></li>
+										<li style="cursor:pointer;"><a  onclick="video('1000000@001$1$0$0','指挥车01')">指挥车摄像1</a></li>
+										<li style="cursor:pointer;"><a  onclick="video('1000000@001$1$0$1','指挥车01')">指挥车摄像2</a></li>
+										<li style="cursor:pointer;"><a  onclick="video('1000000@001$1$0$2','指挥车01')">指挥车摄像3</a></li>
 									</ul>
 								</ul>
 							</div>

@@ -28,8 +28,8 @@ public interface SelectVideoService {
     @Author
     @Create 2017-06-20
      */
-    public List<?> fetchVideoList(SelectVideo video,PageBean pageBean);
-    public List<?> fetchUserList(Users user,PageBean pageBean);
+    public List<?> fetchVideoList(SelectVideo video, PageBean pageBean);
+    public List<?> fetchUserList(Users user, PageBean pageBean);
     
     /**
      * 

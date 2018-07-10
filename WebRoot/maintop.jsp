@@ -13,7 +13,7 @@
 			<head style="overflow: hidden;">
 				<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 				<link rel="shortcut icon" href="favicon.ico" />
-				<title>上海水务海洋视频共享平台</title>
+				<title>上海水务海洋视频共享平</title>
 				<link href="css/style.css" rel="stylesheet" type="text/css" />		
 				<link rel="stylesheet" type="text/css" href="iconfont/iconfont.css"/>
 				<style type="text/css">
@@ -36,7 +36,9 @@
 				<div class="topleft" style="height: 78px;">
 					<a href="main.jsp" target="_parent"><img src="images/loginlogo5.png" title="系统首页" /></a>
 				</div>
+				
 				<div class="topright" style="height: 78px;">
+				<s:property value="#session.user.user_type"/>：<s:property value="#session.user.user_name"/>
 					<ul style="padding-top: 0px;">
 						<li style="width: 60px;">
 							<a href="self-video.jsp" class="inactive" target="middle" style="font-weight: 900;text-align: center;">
@@ -79,7 +81,7 @@
 							</a>
 						</li>
 						<li style="width: 60px;">
-							<a href="main.jsp" target="_parent" style="font-weight: 900;text-align: center;">
+							<a href="${contextPath}/login.jsp" target="_parent" style="font-weight: 900;text-align: center;">
 								<span><img style="width: 60px;" src="<%=basePath%>/images/icon4.png" title="退出"  class="helpimg"/></span>
 								<span style="width: 60px;">退出</span>
 							</a>

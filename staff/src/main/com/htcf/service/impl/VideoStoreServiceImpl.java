@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.htcf.dao.VideoStoreDao;
+import com.htcf.entity.Users;
 import com.htcf.entity.Video;
 import com.htcf.service.VideoStoreService;
 import com.htcf.util.PageBean;
@@ -77,6 +78,15 @@ public class VideoStoreServiceImpl implements VideoStoreService{
 
 	public void setVideoStoreDao(VideoStoreDao videoStoreDao) {
 		this.videoStoreDao = videoStoreDao;
+	}
+
+	public Users fetchUserDetail(String zjID) {
+		return videoStoreDao.fetchUserDetail(zjID);
+	}
+
+	public boolean editAuthority(Users users,String zjID) {
+		
+		return videoStoreDao.editAuthority(users,zjID) ;
 	}
 	
 	

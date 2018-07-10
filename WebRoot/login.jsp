@@ -3,6 +3,46 @@
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
+<<<<<<< .mine
+	<head>
+		<meta charset="UTF-8">
+		<title>水务视频资源整合平台</title>
+		<link rel="stylesheet" href="${contextPath}/css/reset.css">
+        <link rel="stylesheet" href="${contextPath}/css/supersized.css">
+        <link rel="stylesheet" href="${contextPath}/css/login.css">
+        <script type="text/javascript" src="${contextPath}/js/jquery.js"></script>
+        <script src="${contextPath}/js/supersized.3.2.7.min.js"></script>
+        <script src="${contextPath}/js/supersized-init.js"></script>
+        <script src="${contextPath}/js/login.js"></script>
+        <style>
+        	body,html{
+				width:100%;
+				height:100%;
+			}       	
+        				
+        </style>
+	</head>	
+||||||| .r50
+	<head>
+		<meta charset="UTF-8">
+		<title>水务视频资源整合平台</title>
+		<link rel="stylesheet" href="${contextPath}/css/reset.css">
+        <link rel="stylesheet" href="${contextPath}/css/supersized.css">
+        <link rel="stylesheet" href="${contextPath}/css/login.css">
+        <script type="text/javascript" src="${contextPath}/js/jquery.js"></script>
+        <script src="${contextPath}/js/supersized.3.2.7.min.js"></script>
+        <script src="js/supersized-init.js"></script>
+        <!--<script src="${contextPath}/js/relogin.js"></script>-->
+        <script src="${contextPath}/js/login.js"></script>
+        <style>
+        	body,html{
+				width:100%;
+				height:100%;
+			}       	
+        				
+        </style>
+	</head>	
+=======
   <head>
     
     <%
@@ -44,6 +84,7 @@
 		
 		.bgDiv{width:996px;height:592px;background:url("${contextPath}/images/login1.png");background-position: center center;background-repeat: no-repeat;}
 	</style>
+>>>>>>> .r1
 	<script type="text/javascript">
 
 
@@ -78,6 +119,55 @@
 				return true;
 
 			}
+<<<<<<< .mine
+	</script>
+	</head>
+	<body oncontextmenu="return false">
+		<div id="all" style="display:none;">
+			<div class="page-container" style="display:none;"> 
+			<h1>上海市水务海洋视频资源共享平台</h1>     
+	            <s:form id="loginForm"  action="/user/user_login.do" theme="simple" onsubmit="return validate()" >
+					<div>
+						<input type="text" name="user.user_name" id="loginForm_user_userName" class="username" placeholder="请输入用户名：" autocomplete="off"/>
+					</div>
+	                <div>
+						<input type="password" name="user.user_password" id="loginForm_user_password" class="password" placeholder="密码：" oncontextmenu="return false" onpaste="return false" />
+	                </div>
+	                <button class="button" type="submit" id="login" />登录</button>
+	            </s:form>            
+	        </div>
+		</div>
+				
+		<script>			
+			window.onload = function(){
+				$(".connect").animate({"left":"8%"}, 600);
+				$(".page-container").fadeIn();
+			}		
+||||||| .r50
+	</script>
+	</head>
+	<body oncontextmenu="return false">	
+		<div id="all" style="display:none;">
+			<div class="page-container" style="display:none;"> 
+			<h1>上海市水务海洋视频资源共享平台</h1>     
+	            <s:form id="loginForm" action="/user/user_login.do" theme="simple" onsubmit="return validate()" >
+					<div>
+						<input type="text" name="user.user_name" id="loginForm_user_userName" class="username" placeholder="请输入用户名：" autocomplete="off"/>
+					</div>
+	                <div>
+						<input type="password" name="user.user_password" id="loginForm_user_password" class="password" placeholder="密码：" oncontextmenu="return false" onpaste="return false" />
+	                </div>
+	                <button class="button" type="submit" id="login" />登录</button>
+	            </s:form>            
+	        </div>
+		</div>
+				
+		<script>			
+			window.onload = function(){
+				$(".connect").animate({"left":"8%"}, 600);
+				$(".page-container").fadeIn();
+			}		
+=======
 
 
 		function SignIn(){
@@ -87,6 +177,7 @@
 		}
 		
 
+>>>>>>> .r1
 		</script>
 
   </head>

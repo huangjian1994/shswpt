@@ -44,11 +44,11 @@ public interface RegisterDao {
 	 *@param User用户或所属工程
 	 *@return
 	 */
-	public List<EquipmentSelf> getSelf(String Address,String User );
+	public List<EquipmentSelf> getSelf(String Address, String User);
 	
-	public List<EquipmentShare> getShare(String Address,String User );
+	public List<EquipmentShare> getShare(String Address, String User);
 	
-	public List<Uav> getUavS(String Address,String User );
+	public List<Uav> getUavS(String Address, String User);
 
 	/**
 	 * 

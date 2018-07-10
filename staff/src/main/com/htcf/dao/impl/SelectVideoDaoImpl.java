@@ -53,7 +53,7 @@ public class SelectVideoDaoImpl extends BaseDAOImpl<Object, Serializable> implem
     @return List
     @throws
     @Author：
-    @Create 2018-04-25
+    @Create 2018-06-25
      */
     public List<?> fetchUserList(Users user,PageBean pageBean){
     	String sql=" from Users";

@@ -8,7 +8,6 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
 
-import com.htcf.service.*;
 import org.apache.struts2.ServletActionContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -17,6 +16,12 @@ import org.springframework.stereotype.Controller;
 import com.htcf.entity.Message;
 import com.htcf.entity.Notice;
 import com.htcf.entity.Sjzd;
+import com.htcf.service.IIndexService;
+import com.htcf.service.IMessageService;
+import com.htcf.service.INoticeService;
+import com.htcf.service.ISjzdService;
+import com.htcf.service.IUserService;
+
 
 
 @Controller("indexAction")

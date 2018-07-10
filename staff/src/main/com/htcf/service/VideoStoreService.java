@@ -2,6 +2,7 @@ package com.htcf.service;
 
 import java.util.List;
 
+import com.htcf.entity.Users;
 import com.htcf.entity.Video;
 import com.htcf.util.PageBean;
 
@@ -27,7 +28,7 @@ public interface VideoStoreService {
     @Author：yinying
     @Create 2017-04-25
      */
-    public List<?> fetchVideoList(Video video,PageBean pageBean);
+    public List<?> fetchVideoList(Video video, PageBean pageBean);
     
     /**
      * 
@@ -39,6 +40,9 @@ public interface VideoStoreService {
     @Create 2017-04-26
      */
     public Video fetchVideoDetail(String zjID);
+    public Users fetchUserDetail(String zjID);
+
+	public boolean editAuthority(Users users, String zjID);
     
     
     

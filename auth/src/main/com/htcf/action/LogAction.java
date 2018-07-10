@@ -1,6 +1,9 @@
 package com.htcf.action;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -8,7 +11,6 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.htcf.service.IUserService;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import net.sf.json.JsonConfig;
@@ -17,10 +19,17 @@ import net.sf.json.util.CycleDetectionStrategy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.StringUtils;
 
+import com.htcf.entity.Menu;
 import com.htcf.entity.OperateLog;
+import com.htcf.entity.Role;
 import com.htcf.entity.User;
+import com.htcf.entity.UserRole;
+import com.htcf.service.IMenuService;
 import com.htcf.service.IOperateLogService;
+import com.htcf.service.IRoleService;
+import com.htcf.service.IUserService;
 
 
 @Controller("logAction")
@@ -160,7 +169,7 @@ public class LogAction extends BaseAction {
 			Map<String,Object> map = new LinkedHashMap<String,Object>(2);
 			map.put("total", pageBean.getTotalRecord());
 			map.put("rows", rows);
-			//response.setCharacterEncoding("utf-8");
+			response.setCharacterEncoding("utf-8");
 			JSONObject json = JSONObject.fromObject(map);
 			System.out.println(json.toString());
 			response.getWriter().write(json.toString());

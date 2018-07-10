@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.stereotype.Repository;
 
 import com.htcf.dao.VideoStoreDao;
+import com.htcf.entity.Users;
 import com.htcf.entity.Video;
 import com.htcf.util.PageBean;
 
@@ -70,4 +71,33 @@ public class VideoStoreDaoImpl extends BaseDAOImpl<Object, Serializable> impleme
     	}
     	return video;
     }
+    /**
+     * 详情
+     */
+	public Users fetchUserDetail(String zjID) {
+		String sql=" from Users where id="+zjID+"";
+		List<?> l=this.findByJPQL(sql, null);
+		Users users=new Users();
+		if(l !=null && l.size()!=0){
+			users=(Users) l.get(0);
+		}
+		return users;
+	}
+	/**
+	 * 更新权限
+	 */
+	public boolean editAuthority(Users user,String zjID) {
+		String sql="update users set user_type='"+user.getUser_type()+"',user_partition='"+user.getUser_partition()+"',user_authority='"+user.getUser_authority()+"' " +
+				"where id="+zjID+"";
+		System.out.println("sql="+sql);
+		try{
+			this.updateBySql(sql);
+			return true;
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return false;
+		
+	}
+	
 }

@@ -12,6 +12,6 @@ public interface SelectVideoDao {
 	public List selectSchoolItem() ;
 	public List selectSchoolItem11();
     //find the videodan
-	public List<?> fetchVideoList(SelectVideo video,PageBean pageBean);
-	public List<?> fetchUserList(Users user,PageBean pageBean);
+	public List<?> fetchVideoList(SelectVideo video, PageBean pageBean);
+	public List<?> fetchUserList(Users user, PageBean pageBean);
 }

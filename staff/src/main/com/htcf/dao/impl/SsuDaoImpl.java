@@ -326,5 +326,24 @@ public class SsuDaoImpl extends BaseDAOImpl<Object, Serializable> implements Ssu
 		return null;
 		
 	}
-	
+
+	/**
+	 * @return
+	 * @Description：共享设备查询 质检站设备
+	 * @author:
+	 * @Time2017-5-10下午01:58:47
+	 */
+	@Override
+	public List<?> fetchZjz() {
+		System.out.println("--------查询质监站的设备-----------");
+		String sql = " select id,outvideo_name, outvideo_code, outvideo_approve, outvideo_date, " +
+				" outvideo_useful, outvideo_address, outvideo_longitude, outvideo_latitude, outvideo_user," +
+				" outvideo_type,dm,dwdm,ssgc,gcsx from share_video where OUTVIDEO_APPROVE ='是' and gcsx ='重大危险源'";
+		List<?> l = this.findBySQL(sql);
+		if(l != null && l.size()!=0){
+			return l ;
+		}
+		return null;
+	}
+
 }

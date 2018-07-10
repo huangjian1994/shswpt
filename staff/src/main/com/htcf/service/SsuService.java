@@ -162,5 +162,12 @@ public interface SsuService {
 	*@return
 	 */
 	public List<?> fetFqsp();
-	
+
+	/**
+	 * @Description：共享设备查询 质检站设备
+	 *@author:
+	 *@Time2017-5-10下午01:58:47
+	 *@return
+	 */
+	List<?> fetZjz();
 }

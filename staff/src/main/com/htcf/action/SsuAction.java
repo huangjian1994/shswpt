@@ -407,8 +407,7 @@ public class SsuAction extends BaseAction {
 				if(fxzdList.size() > 0){
 					System.out.println(fxzdList.size());
 				}
-				
-//				
+
 				HttpServletResponse response = this.getHttpServletResponse();
 				response.setContentType("text/plain;charset=utf-8");
 				PrintWriter out = null;
@@ -442,8 +441,6 @@ public class SsuAction extends BaseAction {
 					if(yxhtList.size() >0){
 						System.out.println("中小河道"+yxhtList.size());
 					}
-					
-//					
 					HttpServletResponse response = this.getHttpServletResponse();
 					response.setContentType("text/plain;charset=utf-8");
 					PrintWriter out = null;
@@ -460,7 +457,46 @@ public class SsuAction extends BaseAction {
 					out.flush();
 					return null;
 				}
-	
+
+	/**
+	 * @Description：共享设备查询 质检站设备
+	 *@author:
+	 *@Time2017-5-10下午01:58:47
+	 *@return
+	 */
+	public String fetchZjz(){
+		try {
+			zdgcList = this.ssuService.fetZjz();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		if(zdgcList.size()>0){
+			System.out.println(zdgcList.size());
+			System.out.println("有");
+			for(int i = 0 ;i<zdgcList.size();i++){
+				Object[] obj = (Object[])zdgcList.get(i);
+				System.out.println("+++++++++++++++++"+obj[0]);
+
+				System.out.println("+++++++++++++++++"+obj[1]);
+			}
+		}
+		HttpServletResponse response = this.getHttpServletResponse();
+		response.setContentType("text/plain;charset=utf-8");
+		PrintWriter out = null;
+		try {
+			out = response.getWriter();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		JsonConfig config = new JsonConfig();
+		config.setCycleDetectionStrategy(CycleDetectionStrategy.LENIENT); // 自动为我排除circle
+		JSONArray arr = JSONArray.fromObject(zdgcList, config);
+		System.out.println("输出json"+arr);
+		out.print(arr.toString());
+		out.flush();
+		return null;
+	}
+
 				/**
 				 * @Description：自建和共享设备查询 中博对外博览会防汛设备
 				 *@author:
@@ -473,8 +509,6 @@ public class SsuAction extends BaseAction {
 						} catch (Exception e) {
 							e.printStackTrace();
 						}
-						
-						
 						if(zdgcList.size()>0){
 							System.out.println(zdgcList.size());
 							System.out.println("有分享值");

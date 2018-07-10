@@ -56,11 +56,20 @@
 	//document.myForm.action="<%=basePath%>/videostore/videostore_fetchVideoDetail.do?zjID="+zjID;
 	//document.myForm.target="_self";
 	//document.myForm.submit();
-//	var dizhi="<%=basePath%>/videostore/videostore_fetchVideoDetail.do?ID="+id;
+	var dizhi="<%=basePath%>/videostore/videostore_fetchVideoDetail.do?ID="+id;
 	//document.myForm.target="_blank";
 	//document.myForm.submit();
 	window.open(dizhi, "displayWindow", "menubar=yes,left=300,top=100,width=400,height=600");
 }
+		function goUserODetail(id){
+			var dizhi="<%=basePath%>/videostore/videostore_fetchUserDetail.do?zjID="+id;
+			window.open(dizhi, "displayWindow", "menubar=yes,left=500,top=100,width=400,height=400");
+		}
+		function goUserEditor(id){
+			var dizhi="<%=basePath%>/videostore/videostore_fetchUserEditor.do?zjID="+id;
+			window.open(dizhi, "displayWindow", "menubar=yes,left=500,top=100,width=400,height=400");
+			
+		}
 </script>
 	</head>
 
@@ -179,7 +188,9 @@
 													</select>	
                                         </td>
                                         <td class="project-actions">
-                                        	<button style="border-radius:4px;" type="button" class="btn btn-sm btn-primary"onclick="goUserOpen('${ r.id }')"> 编辑权限</button> </span>
+                                        	<button style="border-radius:4px;" type="button" class="btn btn-sm btn-primary"onclick="goUserODetail('${ r.id }')"> 详情</button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        
+                                        	<button style="border-radius:4px;" type="button" class="btn btn-sm btn-primary"onclick="goUserEditor('${ r.id }')"> 编辑权限</button> </span>
                                         </td>
                                     </tr>
                                   </c:forEach>

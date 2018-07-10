@@ -2,35 +2,28 @@ package com.htcf.action;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import net.sf.json.JSONObject;
 
 import org.apache.struts2.ServletActionContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
-import com.htcf.entity.User;
+import com.htcf.entity.Users;
 import com.htcf.entity.Video;
+import com.htcf.service.SelectVideoService;
 import com.htcf.service.VideoStoreService;
 
 
@@ -41,11 +34,15 @@ public class VideoStoreAction extends BaseAction{
 	//
 	@Autowired
 	private VideoStoreService videoStoreService;
+	@Autowired
+    private SelectVideoService selectVideoService;
 	//实体
 	private Video video = new Video();
+	private Users users=new Users();
 	
 	//List
 	private List<?> videoList;
+	private List<?> userList;
 	
 	//变量
 	private File upload;
@@ -58,11 +55,6 @@ public class VideoStoreAction extends BaseAction{
 	private String fileName;
 	
 	private String videoFileName;
-	
-	private String deviceCode;
-	private String beginTime;
-	private String endTime; 
-	private String intervalTime;
 	/**
 	 * 
 	Description :获取时间
@@ -283,8 +275,53 @@ public class VideoStoreAction extends BaseAction{
 		video = videoStoreService.fetchVideoDetail(zjID);
 		return "videostoreDetail";
 	}
-	
-	
+	//----------------------开始------------------------------
+	/**
+	 * 权限管理--详情
+	 * */
+	public String fetchUserDetail(){
+		users=videoStoreService.fetchUserDetail(zjID);
+		return "useDetail";
+	}
+	public String fetchUserEditor(){
+		users=videoStoreService.fetchUserDetail(zjID);
+		return "useEditor";
+	}
+	public String editAuthority(){
+		System.out.println("得到的用户专题是"+users.getUser_authority());
+		System.out.println("得到的用户类型是"+users.getUser_type());
+		System.out.println("==="+zjID);
+		System.out.println("用户"+users.getUser_name());
+		System.out.println("373993====");
+		boolean flag=videoStoreService.editAuthority(users,zjID);
+		/*if(flag){
+			HttpServletRequest request= this.getHttpServletRequest();
+			pageBean=this.processPageBean(request);
+			pageBean.setPageRecord(10);
+			userList = selectVideoService.fetchUserList(users,pageBean);
+			//12341
+			//request.setAttribute("videoList", videoList);
+			request.getSession().setAttribute("videoList", videoList);
+			return "userSelect";
+		}*/
+		uploadMessage="<script type='text/javascript'>alert('权限修改成功！')</script>";
+		
+		return "userSelect";
+	}
+	/**
+	 * 
+	Description :权限修改成功后跳转到权限页面
+	@param
+	@return
+	@throws
+	@Author
+	@Create 
+	 */
+	public String goEditUpload(){
+		uploadMessage="<script type='text/javascript'>alert('权限修改成功！')</script>";
+		return "useEditor";
+	}
+	//----------------------结束------------------------------
 	/**
 	 * 
 	* @Description：下载视频库视频
@@ -413,86 +450,6 @@ public class VideoStoreAction extends BaseAction{
 		return "videostoreDetail";
 	}
 	
-	/**
-	 * Gps查询接口 返回json串
-	 * 
-	 * @param deviceCode
-	 *            设备编码
-	 * @param beginTime
-	 *            开始时间’2018-1-1 11:11:11”
-	 * @param endTime
-	 *            结束时间
-	 * @param intervalTime
-	 *            时间间隔
-	 * @return json
-	 * @throws
-	 * @Author：lwb
-	 * @Create 2018-06-15
-	 */
-	public JSONObject Json() {
-			
-			HttpServletResponse response = ServletActionContext.getResponse();
-			/*
-			 * 在调用getWriter之前未设置编码(既调用setContentType或者setCharacterEncoding方法设置编码),
-			 * HttpServletResponse则会返回一个用默认的编码(既ISO-8859-1)编码的PrintWriter实例。这样就会
-			 * 造成中文乱码。而且设置编码时必须在调用getWriter之前设置,不然是无效的。
-			 */
-			SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式 
-			System.out.println("当前时间："+df.format(new Date()));// new Date()获取当前系统时间
-			intervalTime="3";
-			Date date =new Date();
-			long now=date.getTime(); 
-			long old =now-180000;
-			endTime=df.format(new Date(now));
-			beginTime=df.format(new Date(old));
-			System.out.println("结束时间："+endTime);
-			System.out.println("开始时间："+beginTime);
-			
-			
-			String url="http://31.16.17.80:8881/emap/api/v1/motion/gpsHistory?deviceCode="+deviceCode
-					+"&beginTime="+beginTime+"&endTime="+endTime+"&intervalTime="+intervalTime;
-			
-			response.setContentType("text/html;charset=utf-8");
-			
-			StringBuilder jsonString = new StringBuilder();
-			JSONObject json=null;
-			try {
-				URL urlObject = new URL(url);
-				HttpURLConnection uc = (HttpURLConnection) urlObject
-						.openConnection();
-				int contentLength = uc.getContentLength();
-				System.out.println(contentLength);
-				BufferedReader in = new BufferedReader(new InputStreamReader(
-						uc.getInputStream(), "utf-8"));
-				String inputLine = in.readLine();
-				while (inputLine != null) {
-					jsonString.append(inputLine);
-				}
-				System.out.println(jsonString);
-				JSONObject jsonObject=JSONObject.fromObject(jsonString);  
-				//data的json格式数据
-				json = jsonObject.getJSONObject("data");
-				System.out.println("data的json数据为"+json);
-				//deviceCode设备编码
-				//String deviceCode=(String) json.get("deviceCode");
-				//beginTime开始时间
-				//String beginTime=(String) json.get("alarmDate");
-				//endTime结束时间
-				//String endTime=(String) json.get("createTime");
-				
-				in.close();
-				uc.disconnect();
-			} catch (MalformedURLException e) {
-				e.printStackTrace();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-			return json;
-			
-	
-	
-	}
-	
 	/*----------------------------------------------------------------------*/
 	
 	
@@ -574,6 +531,32 @@ public class VideoStoreAction extends BaseAction{
 	public void setVideoFileName(String videoFileName) {
 		this.videoFileName = videoFileName;
 	}
+
+	public Users getUsers() {
+		return users;
+	}
+
+	public void setUsers(Users users) {
+		this.users = users;
+	}
+
+	public List<?> getUserList() {
+		return userList;
+	}
+
+	public void setUserList(List<?> userList) {
+		this.userList = userList;
+	}
+
+	public SelectVideoService getSelectVideoService() {
+		return selectVideoService;
+	}
+
+	public void setSelectVideoService(SelectVideoService selectVideoService) {
+		this.selectVideoService = selectVideoService;
+	}
+
+	
 
 	
 	
