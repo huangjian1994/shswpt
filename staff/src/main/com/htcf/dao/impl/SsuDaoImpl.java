@@ -42,7 +42,7 @@ public class SsuDaoImpl extends BaseDAOImpl<Object, Serializable> implements Ssu
 		System.out.println("++++++++++++自建设备json++++++++++");
 		String sql="select id,INVIDEO_NAME,INVIDEO_CODE,INVIDEO_APPROVE,INVIDEO_DATE," +
 				" INVIDEO_USEFUL,INVIDEO_ADDRESS,INVIDEO_LONGITUDE,INVIDEO_LATITUDE," +
-				"INVIDEO_USER,INVIDEO_TYPE,dm,dwdm,ssgc,gcsx from in_video where invideo_APPROVE ='是' order by id ";
+				"INVIDEO_USER,INVIDEO_TYPE,dm,dwdm,ssgc,gcsx from in_video where invideo_APPROVE ='是' order by invideo_name";
 		List<?> l = this.findBySQL(sql);
 		if(l != null && l.size()!=0){
 			return l ;
@@ -54,7 +54,7 @@ public class SsuDaoImpl extends BaseDAOImpl<Object, Serializable> implements Ssu
 		System.out.println("++++++++++++++++++共享设备json+++++");
 		String sql="select id,outvideo_name, outvideo_code, outvideo_approve, outvideo_date,"+
 				" outvideo_useful, outvideo_address, outvideo_longitude, outvideo_latitude, "+
-				" outvideo_user,outvideo_type,dm,dwdm,ssgc,gcsx from share_video where OUTVIDEO_APPROVE ='是' order by id ";
+				" outvideo_user,outvideo_type,dm,dwdm,ssgc,gcsx from share_video where OUTVIDEO_APPROVE ='是' order by outvideo_name ";
 		List<?> l = this.findBySQL(sql);
 		if(l != null && l.size()!=0){
 			return l ;
@@ -202,7 +202,7 @@ public class SsuDaoImpl extends BaseDAOImpl<Object, Serializable> implements Ssu
 		System.out.println("++++++++++++自建设备json++++++++++");
 		String sql="select id,INVIDEO_NAME,INVIDEO_CODE,INVIDEO_APPROVE,INVIDEO_DATE," +
 				" INVIDEO_USEFUL,INVIDEO_ADDRESS,INVIDEO_LONGITUDE,INVIDEO_LATITUDE," +
-				"INVIDEO_USER,INVIDEO_TYPE,dm,dwdm,ssgc,gcsx from in_video where invideo_APPROVE ='是' order by id ";
+				"INVIDEO_USER,INVIDEO_TYPE,dm,dwdm,ssgc,gcsx from in_video where invideo_APPROVE ='是' order by invideo_name ";
 		List<?> l = this.findBySQL(sql);
 		if(l != null && l.size()!=0){
 			return l ;
@@ -333,12 +333,33 @@ public class SsuDaoImpl extends BaseDAOImpl<Object, Serializable> implements Ssu
 	 * @author:
 	 * @Time2017-5-10下午01:58:47
 	 */
-	@Override
+	/*@Override
 	public List<?> fetchZjz() {
 		System.out.println("--------查询质监站的设备-----------");
 		String sql = " select id,outvideo_name, outvideo_code, outvideo_approve, outvideo_date, " +
 				" outvideo_useful, outvideo_address, outvideo_longitude, outvideo_latitude, outvideo_user," +
 				" outvideo_type,dm,dwdm,ssgc,gcsx from share_video where OUTVIDEO_APPROVE ='是' and gcsx ='重大危险源'";
+		List<?> l = this.findBySQL(sql);
+		if(l != null && l.size()!=0){
+			return l ;
+		}
+		return null;
+	}*/
+
+	/**
+	 * @return
+	 * @Description：共享设备查询 自建视频的质检站设备
+	 * @author:
+	 * @Time2017-5-10下午01:58:47
+	 */
+
+	@Override
+	public List<?> fetchZjz() {
+		System.out.println("--------查询自建质监站的设备-----------");
+		String sql = "select id,invideo_name, invideo_code, invideo_approve, invideo_date,"+
+         "invideo_useful, invideo_address, invideo_longitude, invideo_latitude, invideo_user,"+
+        " invideo_type,dm,dwdm,ssgc,gcsx from in_video where inVIDEO_APPROVE ='是' and invideo_user ='安质监站' " +
+		" order by invideo_name";
 		List<?> l = this.findBySQL(sql);
 		if(l != null && l.size()!=0){
 			return l ;

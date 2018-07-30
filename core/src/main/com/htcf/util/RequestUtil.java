@@ -1,11 +1,12 @@
 package com.htcf.util;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
+import java.io.*;
 import java.net.URL;
 import java.net.URLConnection;
+import java.net.URLEncoder;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -49,7 +50,7 @@ public class RequestUtil {
                 result += line;
             }
         } catch (Exception e) {
-            System.out.println("发送GET请求出现异常！" + e);
+            System.out.println("发送GET请求出现异常！");
             e.printStackTrace();
         }
         // 使用finally块来关闭输入流
@@ -125,5 +126,33 @@ public class RequestUtil {
             }
         }
         return result;
-    }    
+    }
+
+    public static void main(String[] args) {
+        String intervalTime = "30";
+//        String endTime = DateUtil.dateToString(new Date(),"yyyy-M-dd HH:mm:ss");
+        String beginTime = "2018-7-24 18:05:01";
+        String endTime = "2018-7-24 18:08:01";
+
+
+
+        Calendar now = Calendar.getInstance();
+        now.add(Calendar.MINUTE,-3);
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-M-dd HH:mm:ss");
+//        String beginTime = format.format(now.getTime());
+        System.out.println("打印结束时间-=========--=-=-=："+beginTime);
+        System.out.println("打印开始时间-=========--=-=-=："+endTime);
+
+        try {
+            String Gps = RequestUtil.sendGet("http://31.16.17.80:8881/emap/api/v1/motion/gpsHistory?",
+                    String.format("deviceCode=%s&beginTime=%s&endTime=%s&intervalTime=%s",
+                            "1000021",
+                            URLEncoder.encode(beginTime,"UTF-8"),
+                            URLEncoder.encode(endTime,"UTF-8"),
+                            intervalTime));
+            System.out.println(Gps);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

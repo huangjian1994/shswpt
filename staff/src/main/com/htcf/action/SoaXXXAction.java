@@ -23,9 +23,11 @@ public class SoaXXXAction {
 			return "error";
 		}
 		// 发送get请求,util
-		String response = 
-			RequestUtil.sendGet("http://31.16.10.180:8080/CXFRest/rest/sample/checkLoginStatus/", String.format("account=%s&tokenId=%s", account, tokenId));
-		
+		String response =
+			RequestUtil.sendGet("http://31.16.10.180:8080/CXFRest/rest/sample/checkLoginStatus/",
+					String.format("account=%s&tokenId=%s", account, tokenId));
+
+//		String response = RequestUtil.sendGet("http://www.baidu.com", "");
 		// 分析response
 		// 如果那个人是登录状态点击的这个链接，那么会返回。
 		// 已登陆：callback({"flag":"login"})

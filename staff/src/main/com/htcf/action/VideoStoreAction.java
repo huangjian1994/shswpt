@@ -449,6 +449,8 @@ public class VideoStoreAction extends BaseAction{
 		video = videoStoreService.fetchVideoDetail(zjID);
 		return "videostoreDetail";
 	}
+
+
 	
 	/*----------------------------------------------------------------------*/
 	

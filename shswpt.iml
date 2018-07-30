@@ -101,6 +101,13 @@
         <deploymentDescriptor name="persistence.xml" url="file://$MODULE_DIR$/artifacts/WEB-INF/classes/META-INF/persistence.xml" />
       </configuration>
     </facet>
+    <facet type="Spring" name="Spring">
+      <configuration>
+        <fileset id="fileset" name="Spring Application Context" removed="false">
+          <file>file://$MODULE_DIR$/core/config/spring/beans.xml</file>
+        </fileset>
+      </configuration>
+    </facet>
   </component>
   <component name="NewModuleRootManager">
     <output url="file://$MODULE_DIR$/WebRoot/WEB-INF/classes" />

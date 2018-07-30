@@ -2,12 +2,22 @@ package com.htcf.action;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
 
+import com.htcf.util.DateUtil;
+
+import com.htcf.util.RequestUtil;
 import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
 import net.sf.json.JsonConfig;
 import net.sf.json.util.CycleDetectionStrategy;
 
@@ -28,7 +38,10 @@ public class SsuAction extends BaseAction {
 	
 	private String pid;//父节点
 	private String type;//节点类型
-	
+	/**
+	 * 指挥车设备代码
+	 */
+	private String deviceCode;
 	
 	private List<?> uavList;//无人机集合
 	private List<?> selfList;//自建视频设备集合
@@ -39,6 +52,8 @@ public class SsuAction extends BaseAction {
 	private List<?> fxzdList;//防汛重点
 	private List<?> yxhtList;//一线海塘
 	private List<?> fqspList;//分区视频
+	private String Gps ;
+
 
 
 	//无人机设备
@@ -497,85 +512,153 @@ public class SsuAction extends BaseAction {
 		return null;
 	}
 
-				/**
-				 * @Description：自建和共享设备查询 中博对外博览会防汛设备
-				 *@author:
-				 *@Time2017-5-10下午01:58:47 
-				 *@return
-				 */
-					public String fetchZwbl(){
-						try {
-							zdgcList = this.ssuService.fetZwbl();
-						} catch (Exception e) {
-							e.printStackTrace();
-						}
-						if(zdgcList.size()>0){
-							System.out.println(zdgcList.size());
-							System.out.println("有分享值");
-							for(int i = 0 ;i<zdgcList.size();i++){
-								Object[] obj = (Object[])zdgcList.get(i);
-								System.out.println("+++++++++++++++++"+obj[0]);
-				
-								System.out.println("+++++++++++++++++"+obj[1]);
-							}
-						}
-						HttpServletResponse response = this.getHttpServletResponse();
-						response.setContentType("text/plain;charset=utf-8");
-						PrintWriter out = null;
-						try {
-							out = response.getWriter();
-						} catch (IOException e) {
-							e.printStackTrace();
-						}
-						JsonConfig config = new JsonConfig();
-						config.setCycleDetectionStrategy(CycleDetectionStrategy.LENIENT); // 自动为我排除circle
-						JSONArray arr = JSONArray.fromObject(zdgcList, config);
-						System.out.println("输出json"+arr);
-						out.print(arr.toString());
-						out.flush();
-						return null;
+	/**
+	 * @Description：自建和共享设备查询 中博对外博览会防汛设备
+	 *@author:
+	 *@Time2017-5-10下午01:58:47
+	 *@return
+	 */
+		public String fetchZwbl(){
+			try {
+				zdgcList = this.ssuService.fetZwbl();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			if(zdgcList.size()>0){
+				System.out.println(zdgcList.size());
+				System.out.println("有分享值");
+				for(int i = 0 ;i<zdgcList.size();i++){
+					Object[] obj = (Object[])zdgcList.get(i);
+					System.out.println("+++++++++++++++++"+obj[0]);
+
+					System.out.println("+++++++++++++++++"+obj[1]);
+				}
+			}
+			HttpServletResponse response = this.getHttpServletResponse();
+			response.setContentType("text/plain;charset=utf-8");
+			PrintWriter out = null;
+			try {
+				out = response.getWriter();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			JsonConfig config = new JsonConfig();
+			config.setCycleDetectionStrategy(CycleDetectionStrategy.LENIENT); // 自动为我排除circle
+			JSONArray arr = JSONArray.fromObject(zdgcList, config);
+			System.out.println("输出json"+arr);
+			out.print(arr.toString());
+			out.flush();
+			return null;
+		}
+	
+		/**
+		 * @Description：查询分区设备
+		 *@author:
+		 *@Time2017-5-10下午01:58:47
+		 *@return
+		 */
+			public String fetchFqsp(){
+
+				fqspList = this.ssuService.fetFqsp();
+
+				System.out.println(fqspList.size());
+				if(fqspList.size()>0){
+					System.out.println("有分享值");
+					for(int i = 0 ;i<fqspList.size();i++){
+						Object[] obj = (Object[])fqspList.get(i);
+						System.out.println("+++++++++++++++++"+obj[0]);
+
+						System.out.println("+++++++++++++++++"+obj[1]);
 					}
-	
-				/**
-				 * @Description：查询分区设备
-				 *@author:
-				 *@Time2017-5-10下午01:58:47 
-				 *@return
-				 */
-					public String fetchFqsp(){
-						
-						fqspList = this.ssuService.fetFqsp();
-						
-						System.out.println(fqspList.size());
-						if(fqspList.size()>0){
-							System.out.println("有分享值");
-							for(int i = 0 ;i<fqspList.size();i++){
-								Object[] obj = (Object[])fqspList.get(i);
-								System.out.println("+++++++++++++++++"+obj[0]);
-				
-								System.out.println("+++++++++++++++++"+obj[1]);
-							}
-						}
-						HttpServletResponse response = this.getHttpServletResponse();
-						response.setContentType("text/plain;charset=utf-8");
-						PrintWriter out = null;
-						try {
-							out = response.getWriter();
-						} catch (IOException e) {
-							e.printStackTrace();
-						}
-						JsonConfig config = new JsonConfig();
-						config.setCycleDetectionStrategy(CycleDetectionStrategy.LENIENT); // 自动为我排除circle
-						JSONArray arr = JSONArray.fromObject(fqspList, config);
-						System.out.println("输出jso"+arr);
-						out.print(arr.toString());
-						out.flush();
-						return null;
-					}
-	
-	
-	
-	
+				}
+				HttpServletResponse response = this.getHttpServletResponse();
+				response.setContentType("text/plain;charset=utf-8");
+				PrintWriter out = null;
+				try {
+					out = response.getWriter();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+				JsonConfig config = new JsonConfig();
+				config.setCycleDetectionStrategy(CycleDetectionStrategy.LENIENT); // 自动为我排除circle
+				JSONArray arr = JSONArray.fromObject(fqspList, config);
+				System.out.println("输出jso"+arr);
+				out.print(arr.toString());
+				out.flush();
+				return null;
+			}
+
+		/**
+		*Description :指挥车GPS信息
+		*@param
+		*@return
+		*@author：hj
+		*@Create 2018-7-20 15:34
+		*/
+		public String getZhcGps()  {
+
+			String intervalTime = "30";
+			String endTime = DateUtil.dateToString(new Date(),"yyyy-M-dd HH:mm:ss");
+			Calendar now = Calendar.getInstance();
+			now.add(Calendar.MINUTE,-1);
+			SimpleDateFormat format = new SimpleDateFormat("yyyy-M-dd HH:mm:ss");
+			String beginTime = format.format(now.getTime());
+			/*String beginTime = "2018-7-24 18:06:01";
+			String endTime = "2018-7-24 18:07:01";*/
+			System.out.println("打印开始时间-=========--=-=-=："+beginTime);
+			System.out.println("打印结束时间-=========--=-=-=："+endTime);
+
+
+			if(StringUtil.isNotBlank(deviceCode)){
+				try {
+					Gps = RequestUtil.sendGet("http://31.16.17.80:8881/emap/api/v1/motion/gpsHistory?",
+                           String.format("deviceCode=%s&beginTime=%s&endTime=%s&intervalTime=%s",
+                                   deviceCode,
+                                   URLEncoder.encode(beginTime,"UTF-8"),
+                                   URLEncoder.encode(endTime,"UTF-8"),
+                                   intervalTime));
+				} catch (UnsupportedEncodingException e) {
+					e.printStackTrace();
+				}
+				System.out.println("请求指挥e车地址："+Gps);
+
+			}
+
+
+			HttpServletResponse response = this.getHttpServletResponse();
+			response.setContentType("text/plain;charset=utf-8");
+			PrintWriter out = null;
+			try {
+				out = response.getWriter();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			JSONObject object = JSONObject.fromObject(Gps);
+			System.out.println("输出jso"+object);
+			out.print(object.toString());
+			out.flush();
+			return null;
+		}
+
+
+	/**
+	 *
+	 Description :获取当前时间
+	 @param
+	 @return
+	 @throws
+	 @Author：yinying
+	 @Create 2017-6-16 下午06:27:53
+	 */
+	public String getDateTime(){
+		Calendar c = Calendar.getInstance();
+		Date date = c.getTime();
+		System.out.println("系统当前时间："+date);
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//可以方便地修改日期格式
+		String datetime = dateFormat.format(date);
+		return datetime;
+	}
+
 	/**---------------------get  set --------------------------*/
 	
 	public Uav getUav() {
@@ -688,10 +771,21 @@ public class SsuAction extends BaseAction {
 	public void setFqspList(List<?> fqspList) {
 		this.fqspList = fqspList;
 	}
-	
-	
-	
-	
-	
 
+
+	public String getDeviceCode() {
+		return deviceCode;
+	}
+
+	public void setDeviceCode(String deviceCode) {
+		this.deviceCode = deviceCode;
+	}
+
+	public String getGps() {
+		return Gps;
+	}
+
+	public void setGps(String gps) {
+		Gps = gps;
+	}
 }
